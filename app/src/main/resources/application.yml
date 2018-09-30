@@ -1,0 +1,8 @@
+logging:  level:    root: info    com.utils.database: debug
+
+server:
+  port: 8864
+#custom: 
+#  driver: 
+#    path: 
+  
