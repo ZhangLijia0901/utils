@@ -1,8 +1,9 @@
-logging:  level:    root: info    com.utils.database: debug
-
+logging:
+  level:
+    root: info
+    com.utils: debug
+  file: app.log
+  path: F:/
 server:
   port: 8864
-#custom: 
-#  driver: 
-#    path: 
   

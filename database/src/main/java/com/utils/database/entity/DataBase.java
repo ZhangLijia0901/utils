@@ -8,6 +8,10 @@ import lombok.ToString;
 public class DataBase {
 	private String name;
 
+	public DataBase() {
+		this.name = "1";
+	}
+
 	public void setSCHEMA_NAME(String name) {
 		this.name = name;
 	}

@@ -42,8 +42,10 @@ public class DBConnect {
 		info.setProperty("password", dataBaseInfo.getPassWord());
 
 		String url = dataBaseInfo.getUrl();
-
+		log.debug("获取数据库连接: userName[{}], passWord[{}], url[{}]", dataBaseInfo.getUserName(),
+				dataBaseInfo.getPassWord(), url);
 		try {
+
 			Connection connection = driver.connect(url, info);
 			return connection;
 		} catch (SQLException e) {
@@ -60,14 +62,14 @@ public class DBConnect {
 
 	private Driver getDriver(DataBaseType dataBaseType, String jarUrl, String driverClass) {
 		if (getClassLoader(dataBaseType) == null)
-			setClassLoader(dataBaseType, jarUrl);
+			setClassLoader(dataBaseType);
 		Driver driver = ConnectionFactory.getInstance().getDriver(dataBaseType, driverClass);
 		drivers.put(dataBaseType, driver);
 		return driver;
 	}
 
-	private void setClassLoader(DataBaseType dataBaseType, String jarUrl) {
-		ClassloaderUtils.addClassLoader(dataBaseType, jarUrl);
+	private void setClassLoader(DataBaseType dataBaseType) {
+		ClassloaderUtils.addClassLoader(dataBaseType);
 	}
 
 	private ClassLoader getClassLoader(DataBaseType dataBaseType) {

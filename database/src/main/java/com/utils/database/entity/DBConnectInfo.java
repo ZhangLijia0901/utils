@@ -23,7 +23,7 @@ public class DBConnectInfo {
 		if (FilePathService.getInstance() != null)
 			return FilePathService.getInstance().getDriverJarUrl(getDataBaseType());
 		else
-			return getDataBaseType().getJarUrl();
+			return getDataBaseType().getJarPath();
 	}
 
 	public String getDriverClass() {

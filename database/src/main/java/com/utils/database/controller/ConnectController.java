@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.generator.utils.DataBaseType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.utils.database.common.Constant;
 import com.utils.database.entity.DBConnectInfo;
 import com.utils.database.service.DataBaseHander;
 
@@ -32,13 +35,14 @@ public class ConnectController {
 	private DataBaseHander baseHander;
 
 	@PostMapping
-	public ResponseEntity<Map<String, Object>> testConnect(@RequestBody DBConnectInfo connectInfo) {
+	public ResponseEntity<Map<String, Object>> connect(@RequestBody DBConnectInfo connectInfo, HttpSession session) {
+		session.setAttribute(Constant.DB_CONNECT_INFO, connectInfo);
 		Object conn = baseHander.testConnection(connectInfo);
-		return new ResponseEntity<>(Map.of("status",conn), HttpStatus.OK);
+		return new ResponseEntity<>(Map.of("status", conn), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<String>> getDataType() {
+	public ResponseEntity<List<String>> dataType() {
 		List<String> support = new ArrayList<>();
 		for (DataBaseType dbt : DataBaseType.values())
 			if (dbt.getName() != null)

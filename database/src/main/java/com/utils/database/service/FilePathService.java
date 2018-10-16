@@ -35,7 +35,7 @@ public class FilePathService implements InitializingBean {
 	public String getDriverJarUrl(DataBaseType dataBaseType) {
 		if (StringUtils.isEmpty(this.driverPath) || "null".equals(this.driverPath))
 			this.driverPath = getCurrentPath();
-		return driverPath + dataBaseType.getJarUrl();
+		return driverPath + dataBaseType.getJarPath();
 	}
 
 	@Override

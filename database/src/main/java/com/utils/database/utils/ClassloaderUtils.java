@@ -14,6 +14,11 @@ public class ClassloaderUtils {
 		ObjectFactory.addExternalClassLoader(classLoaders);
 	}
 
+	public static void addClassLoader(DataBaseType dataBaseType) {
+		ClassLoader classLoader = JarLoader.createClassLoader(dataBaseType.getJarUrl());
+		ObjectFactory.addExternalClassLoader(Map.of(dataBaseType, classLoader));
+	}
+
 	public static ClassLoader getClassLoader(DataBaseType dataBaseType) {
 		return ObjectFactory.getExternalClassLoader(dataBaseType);
 	}

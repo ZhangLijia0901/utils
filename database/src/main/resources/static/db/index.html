@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Database</title>
+<link rel="stylesheet" href="/css/milligram.css">
+<link rel="stylesheet" href="/css/layer.css">
+<style type="text/css">
+body {
+	margin: 1em 2em;
+}
+select	{
+	height: 2.8em;
+	width: 9em;
+}
+input:not([type]) {
+	width: 10em;
+	height: 2.8em;
+}
+#database_info{
+    float: left;
+    width: 16em;
+    height: 35em;
+    overflow: overlay;
+}
+#database_info .title{
+	border-top: 1px dashed #ccc; 
+	padding-left: 1em; 
+	font-size: 1.2em; 
+	font-weight: bold;
+}
+#database_info .context{
+    border-top: 1px dashed #ccc;
+    margin-left: 1em;
+    cursor: pointer;
+    padding: .3em .7em;
+}
+
+#database_info .context:hover{
+	background-color: #ccc;
+    border-radius: .8em;
+}
+#database_info .context.current{
+	color: #9b4dca;
+}
+
+</style>
+</head>
+<body>
+	<div style="font-size: 1.5em;">数据库连接</div>
+	<div id = "db_connect_info">
+		DBType: <select name="type" id="db_type"></select> &nbsp;
+		DBHost: <input name="host" value="127.0.0.1"/>&nbsp;
+		DBPort: <input name="port" value="3306" />&nbsp;
+		UserName: <input name="userName" value="root"/>&nbsp;
+		PassWord: <input name="passWord" value="x5" />&nbsp;
+		DBName <input name="database" value=""/>
+		<button id = "db_test">测试</button>
+		<button id = "db_connect">连接</button>
+		<br/>
+	</div>
+	
+	<div>
+		<div id="database_info"></div>
+		
+	</div>
+
+</body>
+
+<script type="text/html" id="dbTypeTemp">
+	{{each datas as data index}}
+		<option value="{{data}}" {{if da=='mysql'}}selected{{/if}} >{{data}}</option>
+	{{/each}}
+</script>
+
+<script type="text/html" id="databaseInfoTemp">
+	<div class="title">数据库</div>
+	{{each data as da index}}
+		<div class="context">{{da.name}}</div>
+	{{/each}}
+	<div style="border-bottom: 1px dashed #ccc;"></div>
+</script>
+
+<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/js/template-web.js"></script>
+<script type="text/javascript" src="/js/layer.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</html>

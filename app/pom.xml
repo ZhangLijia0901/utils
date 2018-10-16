@@ -12,8 +12,12 @@
 	<properties>
 		<start.class>com.utils.app.App</start.class>
 	</properties>
-
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -52,6 +56,7 @@
 					<useTestClasspath>false</useTestClasspath>
 					<mainClass>${start.class}</mainClass>
 				</configuration>
+
 			</plugin>
 		</plugins>
 		<finalName>utils</finalName>

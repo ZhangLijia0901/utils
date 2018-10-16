@@ -11,8 +11,10 @@ import lombok.Getter;
 @Getter
 public enum DataBaseType {
 
-	MYSQL("mysql", "mysql-connector-java-5.1.7.jar", "com.mysql.jdbc.Driver", "jdbc:mysql://", "show databases;"), //
-	Oracle_11g("", "", "", "", ""), //
+	MYSQL("mysql", "mysql-connector-java-5.1.7.jar", "com.mysql.jdbc.Driver", "jdbc:mysql://", new MySql()), //
+	Oracle_11g("", "", "", "", new Oracle()), //
+	PostgreSQL("postgresql", "postgresql-9.4-1203-jdbc42.jar", "org.postgresql.Driver", "jdbc:postgresql://",
+			new PostgreSQL()), //
 	DEFAULT;
 
 	private static String DRIVER_PATH = "/driver/";
@@ -21,12 +23,12 @@ public enum DataBaseType {
 	}
 
 	private DataBaseType(String name, String jarUrl, String driverClass, String connectionProtocol,
-			String queryDataBase) {
+			DataBaseCustom dataBaseCustom) {
 		this.name = name;
 		this.jarUrl = jarUrl;
 		this.driverClass = driverClass;
 		this.connectionProtocol = connectionProtocol;
-		this.queryDataBase = queryDataBase;
+		this.dataBase = dataBaseCustom;
 	}
 
 	private String name; // 类型
@@ -35,9 +37,9 @@ public enum DataBaseType {
 	private String connectionProtocol;// 连接协议
 
 	// ------------------------------------------------
-	private String queryDataBase;// 查询数据
+	private DataBaseCustom dataBase;// 查询数据
 
-	public String getJarUrl() {
+	public String getJarPath() {
 		return DRIVER_PATH + this.jarUrl;
 	}
 
