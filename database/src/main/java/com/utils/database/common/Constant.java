@@ -4,4 +4,6 @@ package com.utils.database.common;
 public interface Constant {
 
 	String DB_CONNECT_INFO = "dbConnectInfo";
+	String STATUS = "status";
+//	String SELECT = "SELECT";
 }

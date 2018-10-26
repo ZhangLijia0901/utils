@@ -38,7 +38,7 @@ public class ConnectController {
 	public ResponseEntity<Map<String, Object>> connect(@RequestBody DBConnectInfo connectInfo, HttpSession session) {
 		session.setAttribute(Constant.DB_CONNECT_INFO, connectInfo);
 		Object conn = baseHander.testConnection(connectInfo);
-		return new ResponseEntity<>(Map.of("status", conn), HttpStatus.OK);
+		return new ResponseEntity<>(Map.of(Constant.STATUS, conn), HttpStatus.OK);
 	}
 
 	@GetMapping

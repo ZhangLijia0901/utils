@@ -28,7 +28,7 @@ public class ExecuteSql {
 
 	}
 
-	public int ohterSql(Connection conn, String sql, Object... objs) {
+	Integer ohterSql(Connection conn, String sql, Object... objs) {
 		if (conn == null)
 			throw new NullPointerException("Connection is null");
 		if (sql == null)
@@ -51,7 +51,7 @@ public class ExecuteSql {
 	 * 
 	 * @return
 	 */
-	public ResultSet querySql(Connection conn, String sql, Object... objs) {
+	ResultSet querySql(Connection conn, String sql, Object... objs) {
 		if (conn == null)
 			throw new NullPointerException("Connection is null");
 		if (sql == null)

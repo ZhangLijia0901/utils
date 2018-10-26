@@ -47,12 +47,21 @@ connect = {
 
 function bindEnvet(){
 	
+	/** 打开数据库 */
 	$('#database_info').on('click', '.context', function(){
 		var $this = $(this);
 		var dbName = $this.text();
 		console.info(dbName);
 		
 		console.info(this);
+	});
+	
+	$('#database_info').on('contextmenu', function(e){
+		e.preventDefault(); //取消默认的浏览器自带右键
+		console.info(e);
+		
+		$('#right_menu').css({'left': e.clientX + 'px', 'top': e.clientY + 'px'}).html('123');
+		
 	});
 	
 	/** 连接 */

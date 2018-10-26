@@ -26,8 +26,8 @@ public class DataBaseControllerTest {
 		try {
 			System.err.println(String.format("\n开始发送: %s, %s", url, "GET"));
 			get();
-//			System.err.println(String.format("\n开始发送: %s, %s", url, "POST"));
-//			post();
+			System.err.println(String.format("\n开始发送: %s, %s", url, "POST"));
+			post();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,6 +38,19 @@ public class DataBaseControllerTest {
 		MvcResult mvcResult = mockMvc
 				.perform(MockMvcRequestBuilders.get(url).accept(MediaType.APPLICATION_JSON).session(session))
 				.andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		String response = mvcResult.getResponse().getContentAsString();
+
+		assertTrue("正确", status == 200);
+		assertFalse("错误", status != 200);
+
+		System.err.println("返回结果：" + status);
+		System.err.println(response);
+	}
+
+	public void post() throws Exception {
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url).accept(MediaType.APPLICATION_JSON)
+				.session(session).param("name", "'x")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		String response = mvcResult.getResponse().getContentAsString();
 

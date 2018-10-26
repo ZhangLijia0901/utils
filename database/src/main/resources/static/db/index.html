@@ -44,6 +44,12 @@ input:not([type]) {
 	color: #9b4dca;
 }
 
+
+#right_menu{
+	overflow: hidden; /*隐藏溢出的元素*/
+	position: absolute; /*自定义菜单相对与body元素进行定位*/
+}
+
 </style>
 </head>
 <body>
@@ -64,7 +70,9 @@ input:not([type]) {
 		<div id="database_info"></div>
 		
 	</div>
-
+	
+	
+	<div id="right_menu"></div>
 </body>
 
 <script type="text/html" id="dbTypeTemp">

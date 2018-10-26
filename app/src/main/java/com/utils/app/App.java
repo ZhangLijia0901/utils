@@ -2,7 +2,6 @@ package com.utils.app;
 
 import java.lang.reflect.Field;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import sun.misc.Unsafe;
@@ -35,7 +34,29 @@ public class App {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(App.class, args);
+
+		Long i = 128L;
+		Long i1 = 128L;
+		System.err.println(i == i1);
+		String str1 = "str";
+		String str2 = "ing";
+
+		String str3 = "str" + "ing";// 常量池中的对象
+		String str4 = str1 + str2; // 在堆上创建的新的对象
+		String str5 = "string";// 常量池中的对象
+		System.err.println(str4 == str5);
+
+//		Map<Integer, Integer> map = new HashMap<>(2, 0.75f);
+//		map.put(5, 5);
+//
+//		new Thread(() -> {
+//			map.put(3, 3);
+//		}).start();
+//		new Thread(() -> {
+//			map.put(7, 7);
+//		}).start();
+
+//		SpringApplication.run(App.class, args);
 
 //		new DBConnect();
 
